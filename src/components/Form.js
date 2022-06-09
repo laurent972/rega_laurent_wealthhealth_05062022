@@ -15,16 +15,11 @@ const Form = () => {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
     const [department, setDepartment] = useState('');
-
- 
-    
+    const form = document.getElementById('createEmployee');
 
     const AddEmployee = (e) =>{
         e.preventDefault();
-        console.table(firstName, lastName, dateBirth, dateStart, address, city, state, zip, department);
-
         const employeeData = JSON.parse(localStorage.getItem('employees')) || [];
-        console.table(firstName, lastName, dateBirth, dateStart, address, city, state, zip, department);
         const employee = {
                 firstName,
                 lastName,
@@ -38,16 +33,13 @@ const Form = () => {
         }
 
         employeeData.push(employee);
-        localStorage.setItem('employees', JSON.stringify(employeeData));
-
-            
+        localStorage.setItem('employees', JSON.stringify(employeeData));  
+        form.reset();   
     }
-
-
 
     return (
         <>
-            <form onSubmit={AddEmployee} className='row g-3'>
+            <form id='createEmployee' onSubmit={AddEmployee} className='row g-3'>
                 <div className="row g-3">
                 <div className="col">
                 <label htmlFor="firstName" className="form-label">First name</label>
@@ -136,7 +128,7 @@ const Form = () => {
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="inputZip" className="form-label">Zip</label>
-                    <input type="text" className="form-control" id="inputZip" onChange={(e) => setZip(e.target.value)}/>
+                    <input type="number" className="form-control" id="inputZip" onChange={(e) => setZip(e.target.value)}/>
                 </div>
                 <label htmlFor="inputZip" className="form-label">Department</label>
                 <select className="form-select mt-0" multiple aria-label="multiple select example" onChange={(e) => setDepartment(e.target.value)}>
