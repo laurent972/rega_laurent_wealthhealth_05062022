@@ -1,0 +1,36 @@
+.nav-item a{
+    color:rgb(54, 54, 54);
+    font-size: 0.8em;
+  
+    @media screen and (max-width: 480px) {
+      font-size: 0.8em;
+      padding: 0.5rem 0.35rem;
+    }
+  
+    font-weight: 400;
+    opacity: 1;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+  
+    &:hover{
+      color: rgb(78, 118, 226);
+      transition-duration: 1s;
+      opacity: 0.9;
+      text-decoration: underline;
+    }
+  
+    &.nav-active{
+      text-decoration: underline;
+      color: rgb(78, 118, 226);
+    }
+  }
+  
+  .navbar-brand{
+    img{
+      @media screen and (max-width: 800px) {
+        width:115px;
+      }
+    }
+  
+  }
