@@ -6,7 +6,7 @@ const Employees = () => {
 
     return (
         <div className="container employee-width">
-            <h3>Current Employees</h3>
+            <h3 className='pt-3'>Current Employees</h3>
             <EmployeesList />
         </div>
     );

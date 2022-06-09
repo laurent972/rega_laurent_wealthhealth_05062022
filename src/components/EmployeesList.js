@@ -1,11 +1,62 @@
 import { Search, Tune } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
+import DataTable from 'react-data-table-component';
 
-const EmployeesList = () => {
+
+
+  const columns = [
+    {
+      name: 'First Name',
+      selector: 'firstName',
+      sortable: true,
+    },
+    {
+      name: 'Last Name',
+      selector: 'lastName',
+      sortable: true,
+    },
+    {
+      name: 'Start Date',
+      selector: 'dateStart',
+      sortable: true,
+    },
+    {
+      name: 'Department',
+      selector: 'department',
+      sortable: true,
+    },
+    {
+        name: 'Date of Birth',
+        selector: 'dateBirth',
+        sortable: true,
+      },
+      {
+        name: 'Street',
+        selector: 'address',
+        sortable: true,
+      },
+      {
+        name: 'City',
+        selector: 'city',
+        sortable: true,
+      },
+      {
+        name: 'State',
+        selector: 'state',
+        sortable: true,
+      },
+      {
+        name: 'Zip Code',
+        selector: 'zip',
+        sortable: true,
+      }
+  ];
+
+  
+  const EmployeesList = () => {
 
     let employees = JSON.parse(localStorage.getItem('employees')) || [];
-    const [keyWord, setKeyWord] = useState('');
-
+    const [keyWord, setKeyWord] = useState('');  
     const Search = (word) => {
         employees = employees.filter(
             employee => (
@@ -25,67 +76,26 @@ const EmployeesList = () => {
      }
      
     if(keyWord != '')Search(keyWord)
-     
-    return (
 
+
+      return (
         <>
-        <form className="form-inline d-flex justify-content-end flex-row">
-            <div className="form-group mx-sm-3 mb-2 flex-row">
-                <input className="p-1" type="text"  placeholder="Search" onChange={(e)=> setKeyWord(e.target.value)}/>
-            </div>
+            <form className="form-inline d-flex justify-content-end flex-row">
+                <div className="form-group mx-sm-3 mb-2 flex-row">
+                    <input className="p-1" type="text"  placeholder="Search" onChange={(e)=> setKeyWord(e.target.value)}/>
+                </div>
+            </form>
             
-        </form>
-        <table className="table table-striped">
-            <thead className="thead-light">
-                <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Start Date</th>
-                <th>Department</th>
-                <th>Date of Birth</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip Code</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            {employees.map((employee) => 
-                <tr key={employees.indexOf(employee)}>
-                    <td>
-                        {employee.firstName}
-                    </td>
-                    <td>
-                        {employee.lastName}
-                    </td>
-                    <td>
-                        {employee.dateStart}
-                    </td>
-                    <td>
-                        {employee.department}
-                    </td>
-                    <td>
-                        {employee.dateBirth}
-                    </td>
-                    <td>
-                        {employee.address}
-                    </td>
-                    <td>
-                        {employee.city}
-                    </td>
-                    <td>
-                        {employee.state}
-                    </td>
-                    <td>
-                        {employee.zip}
-                    </td>
-                </tr>
-             )}
-             </tbody>
-        </table>
+            <div className="App">     
+                <DataTable
+                pagination
+                columns={columns}
+                data={employees}
+                highlightOnHover
+                />
+            </div>
         </>
-    );
-};
-
-export default EmployeesList;
+      );
+  };
+  
+  export default EmployeesList;
