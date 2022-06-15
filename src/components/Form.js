@@ -1,8 +1,7 @@
+
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addEmployee } from '../feature/employee.slice';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import  Modal  from './Modal';
+
 
 const Form = () => {
     
@@ -16,7 +15,7 @@ const Form = () => {
     const [zip, setZip] = useState('');
     const [department, setDepartment] = useState('');
     const form = document.getElementById('createEmployee');
-
+    const [isDisplayed, setDisplayed] = useState(false)
     const AddEmployee = (e) =>{
         e.preventDefault();
         const employeeData = JSON.parse(localStorage.getItem('employees')) || [];
@@ -33,46 +32,49 @@ const Form = () => {
         }
 
         employeeData.push(employee);
-        localStorage.setItem('employees', JSON.stringify(employeeData));  
+        localStorage.setItem('employees', JSON.stringify(employeeData));
+        setDisplayed(true); 
+        
         form.reset();   
     }
 
     return (
         <>
+        <div className="container global-width">
             <form id='createEmployee' onSubmit={AddEmployee} className='row g-3'>
                 <div className="row g-3">
                 <div className="col">
                 <label htmlFor="firstName" className="form-label">First name</label>
-                    <input type="text" className="form-control" placeholder="First name" aria-label="First name" onChange={(e) => setFirstName(e.target.value)} />
+                    <input type="text" className="form-control" placeholder="First name" aria-label="First name" onChange={(e) => setFirstName(e.target.value)} required="required"/>
                 </div>
                 <div className="col">
                 <label htmlFor="lastName" className="form-label">Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" aria-label="Last name" onChange={(e) => setlastName(e.target.value)} />
+                    <input type="text" className="form-control" placeholder="Last name" aria-label="Last name" onChange={(e) => setlastName(e.target.value)} required="required" />
                 </div>
                 </div>
                 <div className="row g-3">
                 <div className="col">
                 <label htmlFor="birth" className="form-label">Date of birth</label>
-                    <input type="date" className="form-control" placeholder="First name" aria-label="First name" onChange={(e) => setDateBirth(e.target.value)} />
+                    <input type="date" className="form-control" placeholder="First name" aria-label="First name" onChange={(e) => setDateBirth(e.target.value)} required="required"/>
                 </div>
                 <div className="col">
                 <label htmlFor="Start" className="form-label">Start Date</label>
-                    <input type="date" className="form-control" placeholder="Last name" aria-label="Last name" onChange={(e) => setDateStart(e.target.value)} />
+                    <input type="date" className="form-control" placeholder="Last name" aria-label="Last name" onChange={(e) => setDateStart(e.target.value)} required="required"/>
                 </div>
                 </div>
                
                 <div className="col-12">
                     <label htmlFor="inputAddress" className="form-label">Address</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} />
+                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required="required"/>
                 </div>
               
                 <div className="col-md-6">
                     <label htmlFor="inputCity" className="form-label">City</label>
-                    <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} />
+                    <input type="text" className="form-control" id="inputCity" onChange={(e) => setCity(e.target.value)} required="required"/>
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="inputState" className="form-label">State</label>
-                    <select id="inputState" className="form-select" onChange={(e) => setState(e.target.value)} >
+                    <select id="inputState" className="form-select" onChange={(e) => setState(e.target.value)} required="required">
                     <option defaultValue>Choose...</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -128,10 +130,10 @@ const Form = () => {
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="inputZip" className="form-label">Zip</label>
-                    <input type="number" className="form-control" id="inputZip" onChange={(e) => setZip(e.target.value)}/>
+                    <input type="number" className="form-control" id="inputZip" onChange={(e) => setZip(e.target.value)} required="required"/>
                 </div>
                 <label htmlFor="inputZip" className="form-label">Department</label>
-                <select className="form-select mt-0" multiple aria-label="multiple select example" onChange={(e) => setDepartment(e.target.value)}>
+                <select className="form-select mt-0" multiple aria-label="multiple select example" onChange={(e) => setDepartment(e.target.value)} required="required">
                     <option value="Sales">Sales</option>
                     <option value="Marketing">Marketing</option>
                     <option value="Engineering">Engineering</option>
@@ -143,6 +145,15 @@ const Form = () => {
                     <button type="submit" className="btn btn-primary btn-lg m-auto">Save</button>
                 </div>
             </form>
+            </div>
+
+            {isDisplayed ? (
+            <Modal
+                title='Congratulations !'
+                text='New employee added'
+                setShow={setDisplayed}
+            />
+            ): ''}
         </>
     );
 };
