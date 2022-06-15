@@ -12,9 +12,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />}  />
-          <Route path="/employees" element={<Employees />}  />
-          <Route path="*" element={<NotFound />}  />
+          <Route path="rega_laurent_wealthhealth_05062022/" element={<Home />}  />
+          <Route path="rega_laurent_wealthhealth_05062022/employees" element={<Employees />}  />
+          <Route path="rega_laurent_wealthhealth_05062022/*" element={<NotFound />}  />
         </Routes>
       </BrowserRouter>
 
