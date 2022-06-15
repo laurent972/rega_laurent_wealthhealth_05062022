@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/rega_laurent_wealthhealth_05062022/static/css/main.a9aabd91.css",
+    "main.js": "/rega_laurent_wealthhealth_05062022/static/js/main.8f8e5547.js",
+    "index.html": "/rega_laurent_wealthhealth_05062022/index.html",
+    "main.a9aabd91.css.map": "/rega_laurent_wealthhealth_05062022/static/css/main.a9aabd91.css.map",
+    "main.8f8e5547.js.map": "/rega_laurent_wealthhealth_05062022/static/js/main.8f8e5547.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9aabd91.css",
+    "static/js/main.8f8e5547.js"
+  ]
+}
