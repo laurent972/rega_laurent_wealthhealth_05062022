@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import  Modal  from './Modal';
+import { Requirements } from 'another_p14_modalbox';
 
 
 const Form = () => {
@@ -15,7 +15,7 @@ const Form = () => {
     const [zip, setZip] = useState('');
     const [department, setDepartment] = useState('');
     const form = document.getElementById('createEmployee');
-    const [isDisplayed, setDisplayed] = useState(false)
+    const [isDisplayed, setDisplayed] = useState(false);
     const AddEmployee = (e) =>{
         e.preventDefault();
         const employeeData = JSON.parse(localStorage.getItem('employees')) || [];
@@ -148,12 +148,9 @@ const Form = () => {
             </div>
 
             {isDisplayed ? (
-            <Modal
-                title='Congratulations !'
-                text='New employee added'
-                setShow={setDisplayed}
-            />
-            ): ''}
+                <Requirements setShow={setDisplayed}/>
+            ): ''} 
+            
         </>
     );
 };

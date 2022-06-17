@@ -2640,6 +2640,11 @@
     "require-from-string" "^2.0.2"
     "uri-js" "^4.2.2"
 
+"another_p14_modalbox@^1.0.1":
+  "integrity" "sha512-n0Xw0SDph8qNxpVRdUzZ0iXzoHO38ZEcoKZu7dPgvbFSfcjcTiiVml1ZSgmpA8ghJr5/kABjes4XxeeIKl+kjw=="
+  "resolved" "https://registry.npmjs.org/another_p14_modalbox/-/another_p14_modalbox-1.0.1.tgz"
+  "version" "1.0.1"
+
 "ansi-escapes@^4.2.1", "ansi-escapes@^4.3.1":
   "integrity" "sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ=="
   "resolved" "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.2.tgz"
