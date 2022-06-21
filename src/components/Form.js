@@ -3,8 +3,21 @@ import React, { useState } from 'react';
 import { Requirements } from 'another_p14_modalbox';
 
 
+/**
+ * Adding user.
+ * @param {string} firstName 
+ * @param {string} lastName 
+ * @param {date} dateBirth 
+ * @param {date} dateStart 
+ * @param {string} address 
+ * @param {string} city 
+ * @param {string} state 
+ * @param {number} zip 
+ * @param {string} department 
+ */
+
+
 const Form = () => {
-    
     const [firstName, setFirstName] = useState('');
     const [lastName, setlastName] = useState('');
     const [dateBirth, setDateBirth] = useState('');
@@ -16,6 +29,8 @@ const Form = () => {
     const [department, setDepartment] = useState('');
     const form = document.getElementById('createEmployee');
     const [isDisplayed, setDisplayed] = useState(false);
+
+  
     const AddEmployee = (e) =>{
         e.preventDefault();
         const employeeData = JSON.parse(localStorage.getItem('employees')) || [];
@@ -31,8 +46,11 @@ const Form = () => {
                 department
         }
 
+        //Saving to localStorage employees
         employeeData.push(employee);
         localStorage.setItem('employees', JSON.stringify(employeeData));
+
+        //Display modal validation
         setDisplayed(true); 
         
         form.reset();   
@@ -147,8 +165,9 @@ const Form = () => {
             </form>
             </div>
 
+            // Display modal
             {isDisplayed ? (
-                <Requirements setShow={setDisplayed}/>
+                <Requirements  title="Félicitations !" text='Bravo !' setShow={setDisplayed}/>
             ): ''} 
             
         </>

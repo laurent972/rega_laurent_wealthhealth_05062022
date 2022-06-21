@@ -4,11 +4,13 @@ import NotFound from "./pages/NotFound";
 import Employees from "./pages/Employees";
 import Header from "./components/Header";
 
+
+
+/** Full navigation. */
 function App() {
   return (
 
     <>
-
       <BrowserRouter>
         <Header />
         <Routes>

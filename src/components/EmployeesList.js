@@ -1,9 +1,9 @@
-import { Search, Tune } from '@mui/icons-material';
+
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 
 
-
+// Manage columns for data table
   const columns = [
     {
       name: 'First Name',
@@ -55,8 +55,15 @@ import DataTable from 'react-data-table-component';
   
   const EmployeesList = () => {
 
+  //Set employee list
     let employees = JSON.parse(localStorage.getItem('employees')) || [];
+  //Set keyword
     const [keyWord, setKeyWord] = useState('');  
+
+/**
+ * SearchEngine.
+ * @param {string} word - search term.
+ */
     const Search = (word) => {
         employees = employees.filter(
             employee => (
@@ -74,9 +81,12 @@ import DataTable from 'react-data-table-component';
        
         return employees;
      }
-     
-    if(keyWord != '')Search(keyWord)
-
+    
+  /**
+ * SearchEngine starts.
+ * @param {string} keyWord - search term.
+ */
+if(keyWord != '')Search(keyWord)
 
       return (
         <>
